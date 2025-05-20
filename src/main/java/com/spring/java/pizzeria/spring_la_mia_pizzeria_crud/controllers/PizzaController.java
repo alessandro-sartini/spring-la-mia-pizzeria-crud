@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.spring.java.pizzeria.spring_la_mia_pizzeria_crud.model.Pizza;
 import com.spring.java.pizzeria.spring_la_mia_pizzeria_crud.repo.PizzaRepository;
 
-
 @Controller
 @RequestMapping("/pizze")
 public class PizzaController {
@@ -22,16 +21,11 @@ public class PizzaController {
     @GetMapping
     public String index(Model model) {
 
-        List<Pizza> pizzaList= repository.findAll();
+        List<Pizza> pizzaList = repository.findAll();
 
         model.addAttribute("pizzaList", pizzaList);
-        for (Pizza pizza : pizzaList) {
-            
-            System.out.println(pizza.getName());
-        }
+
         return "pizzas/index";
     }
-    
-
 
 }
