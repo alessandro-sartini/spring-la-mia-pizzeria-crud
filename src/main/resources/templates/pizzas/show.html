@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<th:block th:replace="~{fragments/starting::thymeleafAndThema}" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:replace="~{fragments/starting::style}" />
+    <title>Pizze</title>
+</head>
+<body>
+
+   <header>
+        <th:block th:replace="~{fragments/navbar::navBar}"></th:block>
+
+    </header>
+    <main>
+
+
+        <div th:if="${pizza}!=null" class="container my-4 text-center">
+            <h1 th:text="|Pizza: ${pizza.name}|"> </h1>
+            <img class="w-50 rounded-5 my-3" th:src="@{${pizza.urlPhoto}}" alt=" ${pizza.name}">
+    
+            <div class="card my-3 mx-auto" style="max-width: 600px;">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">Descrizione: </h5>
+                    <p class="card-text" th:text="${pizza.description} ?${pizza.description}: 'Nessuna descrizione disponibile'"></p>
+                </div>
+            </div>
+        </div>
+       
+        <div th:unless="${pizza}!=null" class="container my-4 text-center">
+            <h1 th:text="|Nessuna pizza disponibile|"> </h1>    
+        </div>
+
+    </main>
+
+</body>
+</html>
