@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<th:block th:replace="~{fragments/starting::thymeleafAndThema}" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:replace="~{fragments/starting::style}" />
+    <title>Pizze</title>
+</head>
+<body>
+    <h1>Elenco pizze: </h1>
+
+    <ul>
+        <li 
+        th:each="element : ${pizzaList}" 
+        th:text="|Pizza: ${element.name} prezzo: €${element.price}|"
+        />
+    </ul>
+
+</body>
+</html>
