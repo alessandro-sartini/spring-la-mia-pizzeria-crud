@@ -9,18 +9,18 @@
 <body>
 
     <nav th:fragment="navBar" class="navbar navbar-expand-lg bg-body-tertiary ">
-            <div class="d-flex justify-content-between">
+            <div class="p-3 d-flex justify-content-between">
             <a class="navbar-brand mx-5 " th:href="@{/home}" th:text="Home">
                 Titolo
             </a>
-            <ul class="navbar-nav">
-                <li class="nav-item  ">
-                    <a class="nav-link" th:href="@{/pizze}" th:text="Pizze">Movies</a>
-                </li>
+            <a class="navbar-brand" th:href="@{/pizze}" th:text="Pizze">Movies</a>
+            <!-- <ul class="navbar-nav">
+                <li class="navbar-brand  ">
+                </li> -->
                 <!-- <li class="nav-item  ">
                     <a class="nav-link" th:href="@{/songs}" th:text="Songs">Songs</a>
                 </li> -->
-            </ul>
+            <!-- </ul> -->
 
         </div>
     </nav>
