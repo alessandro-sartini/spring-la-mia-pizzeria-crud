@@ -21,22 +21,21 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(min=4, max = 20, message = "name must have min: 4 char and max: 20")
+    @Size(min = 4, max = 20, message = "name must have min: 4 char and max: 20")
     @Column(nullable = false, length = 20)
     @NotBlank
     private String name;
 
-    //! large Object
+    // ! large Object
     @Lob
     @NotBlank(message = "the description not be null/empty")
     private String description;
 
-
     @NotBlank
     private String urlPhoto;
-
-    @NotNull
-    @Min(value = 4)
+    
+    @NotNull(message = "Il prezzo non può essere nullo.")
+    @Min(value = 4, message = "Il prezzo deve essere almeno 4.")
     private BigDecimal price;
 
     public Integer getId() {
@@ -78,5 +77,5 @@ public class Pizza {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-    
+
 }
