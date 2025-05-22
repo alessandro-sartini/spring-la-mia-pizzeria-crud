@@ -19,6 +19,8 @@ import com.spring.java.pizzeria.spring_la_mia_pizzeria_crud.repo.PizzaRepository
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/pizze")
@@ -73,5 +75,31 @@ public class PizzaController {
         repository.save(formPizza);
         return "redirect:/pizze";
     }
+
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable("id") Integer id) {
+
+        model.addAttribute("pizza",repository.findById(id).get());
+
+        return "pizzas/edit";
+    }
+    
+    @PostMapping("/edit/{id}")
+     public String update(@Valid @ModelAttribute("pizza") Pizza formPizza,
+      BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "pizzas/edit";
+        }
+        repository.save(formPizza);
+        return "redirect:/pizze";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+       repository.deleteById(id);
+        
+        return "redirect:/pizze";
+    }
+    
 
 }
