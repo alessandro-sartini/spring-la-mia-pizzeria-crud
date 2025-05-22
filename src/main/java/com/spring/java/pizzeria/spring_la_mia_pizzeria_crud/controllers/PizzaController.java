@@ -19,7 +19,6 @@ import com.spring.java.pizzeria.spring_la_mia_pizzeria_crud.repo.PizzaRepository
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -101,5 +100,4 @@ public class PizzaController {
         return "redirect:/pizze";
     }
     
-
 }
