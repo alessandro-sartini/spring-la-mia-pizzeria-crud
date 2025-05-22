@@ -47,10 +47,20 @@ public class PizzaController {
         return "pizzas/show";
     }
 
-    @GetMapping("/searchByName")
-    public String searchIndex(Model model, @RequestParam(name = "name") String name) {
+    // @GetMapping("/searchByName")
+    // public String searchIndex(Model model, @RequestParam(name = "name") String name) {
 
-        List<Pizza> pizzaList = repository.findByNameContaining(name);
+    //     List<Pizza> pizzaList = repository.findByNameContaining(name);
+
+    //     model.addAttribute("pizzaList", pizzaList);
+
+    //     return "pizzas/index";
+
+    // }
+    @GetMapping("/searchByName")
+    public String searchIndex(Model model, @RequestParam(name = "query") String query) {
+
+        List<Pizza> pizzaList = repository.findByNameContainingOrDescriptionContaining(query, query);
 
         model.addAttribute("pizzaList", pizzaList);
 
